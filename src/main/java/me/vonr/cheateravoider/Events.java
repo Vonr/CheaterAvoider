@@ -83,21 +83,23 @@ public class Events {
                 return;
             }
             cracked = true;
+        } else {
+            ((UUIDReport) report).username = gameProfile.getName();
         }
         String playerName = gameProfile.getName();
-        StringBuilder message = new StringBuilder("[\"\",\"§cWARNING: §7One player you reported, \",{\"text\":\"" + playerName + "\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"§c" + playerName + "\n§7Reported at: §r" + this.formatTimestamp(report.timestamp) + "\n§7Reported for: ");
+        StringBuilder message = new StringBuilder("[\"\",\"" + EnumChatFormatting.RED + "WARNING: " + EnumChatFormatting.GRAY + "One player you reported, \",{\"text\":\"" + playerName + "\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + EnumChatFormatting.RED + playerName + "\n" + EnumChatFormatting.GRAY + "Reported at: " + EnumChatFormatting.RESET + this.formatTimestamp(report.timestamp) + "\n" + EnumChatFormatting.GRAY + "Reported for: ");
         boolean isNotFirst = false;
         for (String reason : report.reasons) {
             if (isNotFirst) {
                 message.append(", ");
             }
-            message.append("§r").append(reason).append("§7");
+            message.append(EnumChatFormatting.RESET).append(reason).append(EnumChatFormatting.GRAY);
             isNotFirst = true;
         }
         if (cracked) {
-            message.append("\n\n§eClick to stop warning about this player.\"},\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/ccunreport ").append(gameProfile.getName()).append("\"}}, \"§7, has just joined.\"]");
+            message.append("\n\n" + EnumChatFormatting.YELLOW + "Click to stop warning about this player.\"},\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/ccunreport ").append(gameProfile.getName()).append("\"}}, \"" + EnumChatFormatting.GRAY + ", has just joined.\"]");
         } else {
-            message.append("\n\n§eClick to stop warning about this player.\"},\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/cunreport ").append(gameProfile.getId().toString().replace("-", "")).append("\"}}, \"§7, has just joined.\"]");
+            message.append("\n\n" + EnumChatFormatting.YELLOW + "Click to stop warning about this player.\"},\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/cunreport ").append(gameProfile.getId().toString().replace("-", "")).append("\"}}, \"" + EnumChatFormatting.GRAY + ", has just joined.\"]");
         }
         Minecraft.getMinecraft().thePlayer.addChatComponentMessage(Serializer.jsonToComponent(message.toString()));
     }
@@ -198,7 +200,7 @@ public class Events {
                 }
                 hasPlayer = true;
                 String playerName = p.getName();
-                message.append(",{\"text\":\"\n" + playerName + "\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + EnumChatFormatting.RED + playerName + "\n§7Reported at: " + EnumChatFormatting.RESET + this.formatTimestamp(report.timestamp) + "\n" + EnumChatFormatting.RED + "Reported for: ");
+                message.append(",{\"text\":\"\n" + playerName + "\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"" + EnumChatFormatting.RED + playerName + "\n" + EnumChatFormatting.GRAY + "Reported at: " + EnumChatFormatting.RESET + this.formatTimestamp(report.timestamp) + "\n" + EnumChatFormatting.RED + "Reported for: ");
                 boolean isNotFirst = false;
                 for (String reason : report.reasons) {
                     if (isNotFirst) {

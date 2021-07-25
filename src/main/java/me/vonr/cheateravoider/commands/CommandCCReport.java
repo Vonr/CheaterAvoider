@@ -2,7 +2,7 @@ package me.vonr.cheateravoider.commands;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.regex.Pattern;
+import me.vonr.cheateravoider.CheaterAvoider;
 import me.vonr.cheateravoider.Events;
 import me.vonr.cheateravoider.Report;
 import net.minecraft.command.CommandBase;
@@ -12,8 +12,6 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
 public class CommandCCReport extends CommandBase {
-
-    private static final Pattern pattern = Pattern.compile("[0-9a-f]{32}");
 
     public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
@@ -36,7 +34,7 @@ public class CommandCCReport extends CommandBase {
             return;
         }
         StringBuilder message = new StringBuilder("/ccreport " + args[0]);
-        ArrayList<String> cheats = CommandCReport.constructCheatsArray(args, message);
+        ArrayList<String> cheats = CheaterAvoider.getInstance().constructCheatsArray(args, message);
         long timestamp = new Date().getTime();
         Events.reportedNames.put(args[0], new Report(timestamp, cheats));
         sender.addChatMessage(new ChatComponentText(

@@ -1,5 +1,6 @@
 package me.vonr.cheateravoider.commands;
 
+import me.vonr.cheateravoider.CheaterAvoider;
 import me.vonr.cheateravoider.Events;
 import me.vonr.cheateravoider.Report;
 import net.minecraft.command.CommandBase;
@@ -30,12 +31,12 @@ public class CommandCUnreport extends CommandBase {
             return;
         }
         for (String name : args) {
-            String uuid = CommandCReport.getUUIDFromName(sender, name);
+            String uuid = CheaterAvoider.getInstance().getUUIDFromName(sender, name);
             if (uuid == null) continue;
 
             Report report = Events.reportedUUIDs.remove(uuid);
             if (report == null) {
-                sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Player not found.\n§cDid you mean /ccunreport?"));
+                sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + "Player not found.\n" + EnumChatFormatting.RED + "Did you mean /ccunreport?"));
                 return;
             }
             sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "You will no longer receive warnings from this player."));
