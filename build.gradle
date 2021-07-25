@@ -5,7 +5,7 @@ plugins {
 }
 
 version = mod_version
-group = "co.uk.isxander"
+group = "me.vonr"
 archivesBaseName = mod_id
 
 minecraft {
