@@ -10,8 +10,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import me.vonr.cheateravoider.commands.CommandCCReport;
 import me.vonr.cheateravoider.commands.CommandCCUnreport;
+import me.vonr.cheateravoider.commands.CommandCCReportList;
 import me.vonr.cheateravoider.commands.CommandCReport;
 import me.vonr.cheateravoider.commands.CommandCUnreport;
+import me.vonr.cheateravoider.commands.CommandCReportList;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -46,8 +48,10 @@ public class CheaterAvoider {
         ClientCommandHandler cch = ClientCommandHandler.instance;
         cch.registerCommand(new CommandCCReport());
         cch.registerCommand(new CommandCCUnreport());
+        cch.registerCommand(new CommandCCReportList());
         cch.registerCommand(new CommandCReport());
         cch.registerCommand(new CommandCUnreport());
+        cch.registerCommand(new CommandCReportList());
 
         Runtime.getRuntime().addShutdownHook(new Thread(Events::saveReportedPlayers));
         Events.loadReportedPlayers();
