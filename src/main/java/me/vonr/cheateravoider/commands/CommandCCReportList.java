@@ -1,4 +1,4 @@
-tpackage me.vonr.cheateravoider.commands;
+package me.vonr.cheateravoider.commands;
 
 import me.vonr.cheateravoider.Events;
 import net.minecraft.command.CommandBase;
