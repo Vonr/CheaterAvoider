@@ -31,6 +31,6 @@ public class CommandCReportList extends CommandBase {
                 message.append(EnumChatFormatting.RESET + report.username + " ");
             });
             sender.addChatMessage(new ChatComponentText(message.toString()));
-        });
+        }).start();
     }
 }

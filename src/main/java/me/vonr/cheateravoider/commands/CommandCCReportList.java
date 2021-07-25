@@ -1,4 +1,4 @@
-package me.vonr.cheateravoider.commands;
+tpackage me.vonr.cheateravoider.commands;
 
 import me.vonr.cheateravoider.Events;
 import net.minecraft.command.CommandBase;
@@ -31,6 +31,6 @@ public class CommandCCReportList extends CommandBase {
                 message.append(EnumChatFormatting.RESET + name + " ");
             });
             sender.addChatMessage(new ChatComponentText(message.toString()));
-        });
+        }).start();
     }
 }
